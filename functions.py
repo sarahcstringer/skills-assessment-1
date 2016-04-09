@@ -187,16 +187,22 @@ def get_item_cost(price, state, tax = .05):
     leave that argument out and resort to the default.
     """
     
+    # check if 'CA' was given as an argument
     if state == 'CA':
-        tax = .07
+        # If the user called a specific tax, don't apply the .07 default for CA.
+        # Instead, apply the tax amount the user called.
+        if tax != .05 and tax != .07:
+            tax = .07
 
     total = price + (price * tax)
 
-    return "Cost of item plus tax in {}: ${:.2f}".format(state, total)
+    return "Cost of item plus tax in {}: ${:,.2f}".format(state, total)
 
 # test cases
 print get_item_cost(20, 'CA')
 print get_item_cost(state='NH', price=20)
+print get_item_cost(1500, 'CA', .08)
+print get_item_cost(1500, 'CA')
 
 
 # 2. Turn the block of code from the directions into a function.
@@ -260,4 +266,5 @@ def append_number(num):
     print numbers
     return
 
+# test case
 append_number(60)
