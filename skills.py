@@ -181,7 +181,7 @@ def largest_int(number_list):
             largest_int = item
 
     if number_list == []:
-        largest_int = None
+        return
     
     return largest_int
 
@@ -198,7 +198,7 @@ def halvesies(number_list):
         [0.5, 2.5]
 
     """
-    halvesies = [float(num/2) for num in number_list]
+    halvesies = [(float(num)/2) for num in number_list]
     return halvesies
 
 
@@ -229,13 +229,12 @@ def sum_numbers(number_list):
         0
 
     """
-
+    sum_of_numbers = 0
     if number_list == []:
-        sum_of_numbers = 0
+        return sum_of_numbers
 
     else:
-        sum_of_numbers = number_list[0]
-        for num in number_list[1:]:
+        for num in number_list[:]:
             sum_of_numbers = sum_of_numbers + num
 
     return sum_of_numbers
@@ -413,7 +412,13 @@ def duplicates(my_list):
 
     """
 
-    return []
+    # unique_words = set(my_list)
+    # unique_words = [unique_words]
+
+    # for word in my_list[1:]:
+        
+
+    # return 
 
 
 def find_letter_indices(list_of_words, letter):
@@ -455,10 +460,12 @@ def largest_n_items(input_list, n):
     [59, 700, 6006]
 
     """
-    # not sure if this is legal:
-    largest_n_items = input_list.sort()
+    # not sure if this is valid:
 
-    return largest_n_items[-n::]
+    input_list.sort()
+
+    return input_list[-n::]
+
 
 
 ##############################################################################
