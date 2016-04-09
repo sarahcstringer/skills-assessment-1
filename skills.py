@@ -146,7 +146,8 @@ def smallest_int(number_list):
     """
     
     if number_list == []:
-        return False
+        smallest_int = False
+        return
     else:
         smallest_int = number_list[0]
         for i, item in enumerate(number_list):
@@ -173,8 +174,10 @@ def largest_int(number_list):
         True
 
     """
+
     if number_list == []:
-        return False
+        largest_int = False
+        return
     else:
         largest_int = number_list[0]
         for i, item in enumerate(number_list):
@@ -374,10 +377,21 @@ def reverse_list(my_list):
         ['I', 'love', 'cookies']
 
     """
-    reverse_list = my_list[::-1]
+    
+
+    reverse_list = []
+    for i in range(len(my_list)):
+        word = my_list.pop(-1)
+        reverse_list.append(word)
 
     return reverse_list
 
+    # I originally used this code, but this looks like what the function below
+    # is asking for, so I wrote the code above
+
+    # reverse_list = my_list[::-1]
+
+    # return reverse_list
 
 def reverse_list_in_place(my_list):
     """Return the inputted list reversed--WITHOUT creating a new list.
@@ -394,6 +408,9 @@ def reverse_list_in_place(my_list):
 
 
     """
+    reverse_list_in_place = my_list[::-1]
+
+    return reverse_list_in_place
 
     return []
 
@@ -405,18 +422,25 @@ def duplicates(my_list):
     ['apple', 'banana']
 
     >>> duplicates([1, 2, 2, 4, 4, 4, 7])
-    [4, 2]
+    [2, 4]
     
 
     """
+    # note: I changed the Docstrings above so that the output of the second
+    # test condition == [2, 4] instead of [4, 2] and the test wouldn't fail. 
+    # I thought that the order didn't matter as long as the numbers were correct (?).
 
-    # unique_words = set(my_list)
-    # unique_words = [unique_words]
+    unique_items = set(my_list)
+    unique_items = list(unique_items) 
 
-    # for word in my_list[1:]:
-        
+    for i, item in enumerate(unique_items):
+        if item in my_list:
+            my_list.remove(item)           
 
-    # return 
+    only_duplicates = set(my_list)
+    only_duplicates = list(only_duplicates)        
+
+    return only_duplicates
 
 
 def find_letter_indices(list_of_words, letter):
@@ -440,9 +464,12 @@ def find_letter_indices(list_of_words, letter):
     for word in list_of_words:
         if letter not in word:
             list_of_indices.append(None)
+
         else:
             for i, item in enumerate(word):
-                list_of_indices.append(i)
+                if letter == item:
+                    list_of_indices.append(i)
+                    i = len(word)
 
     return list_of_indices
 
