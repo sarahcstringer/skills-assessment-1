@@ -390,7 +390,8 @@ def join_strings_with_comma(list_of_words):
 
     """
     
-    # start a list of strings, beginning with the first input word
+    # join a list of strings together with a comma as separator, beginning with 
+    # the first input word and continuing sequentially
 
     strings_with_comma = list_of_words[0]
     
@@ -398,7 +399,8 @@ def join_strings_with_comma(list_of_words):
     if len(list_of_words) == 1:
         strings_with_comma = list_of_words[0]
 
-    # iterate through the list of words    
+    # iterate through the list of words and add the next word in the list to the
+    # string    
     else:
         for word in list_of_words[1:]:
             strings_with_comma = "{}, {}".format(strings_with_comma, word) 
@@ -423,6 +425,9 @@ def foods_in_common(foods1, foods2):
 
     """
 
+    # Using set math, create two sets from two lists of foods and determine the
+    # intersection of the sets. Returns a set.
+
     set_foods_1 = set(foods1)
     set_foods_2 = set(foods2)
 
@@ -444,6 +449,8 @@ def reverse_list(my_list):
 
     """
     
+    # move through the list sequentially and pop the last element out into a new
+    # list, called reverse_list, until reaching the first element.
 
     reverse_list = []
     for i in range(len(my_list)):
@@ -474,11 +481,13 @@ def reverse_list_in_place(my_list):
 
 
     """
-    reverse_list_in_place = my_list[::-1]
 
-    return reverse_list_in_place
+    # slice the whole list starting from the end in -1 incremenets (moving backwards)
 
-    return []
+    my_list[::-1]
+
+    return my_list
+
 
 
 def duplicates(my_list):
@@ -496,13 +505,20 @@ def duplicates(my_list):
     # test condition == [2, 4] instead of [4, 2] and the test wouldn't fail. 
     # I thought that the order didn't matter as long as the numbers were correct (?).
 
+
+    # determine the unique pieces of an input list by passing the list to a set
+    # and then turning that set into a list.
     unique_items = set(my_list)
     unique_items = list(unique_items) 
 
+    # for each item in the list of unique list elements, iterate through and pop
+    # out that element from the original input list (leaving only the items that 
+    # are repeated).
     for i, item in enumerate(unique_items):
         if item in my_list:
             my_list.remove(item)           
 
+    # create a list of unique elements from that list of duplicates
     only_duplicates = set(my_list)
     only_duplicates = list(only_duplicates)        
 
@@ -525,12 +541,18 @@ def find_letter_indices(list_of_words, letter):
     [0, 1, 2, None]
 
     """
+    # initialize the list
     list_of_indices = []
 
+    # condition if none of the letters in a word match the target letter 
     for word in list_of_words:
         if letter not in word:
             list_of_indices.append(None)
 
+    # move through the letters in the word, and if a given letter matches the
+    # target, append the index of that letter in the word to the list of indices.
+    # Set i to equal the length of the word (thus ending the iteration,
+    # because this function only calls the first time the letter appears).
         else:
             for i, item in enumerate(word):
                 if letter == item:
@@ -551,7 +573,9 @@ def largest_n_items(input_list, n):
     [59, 700, 6006]
 
     """
-    # not sure if this is valid:
+    # Sort a list of integers and then slice the list depending on the number of 
+    # highest numbers requested in the function call. Highest numbers will be at
+    # the end of the list, so use a negative index to count from the end.
 
     input_list.sort()
 
