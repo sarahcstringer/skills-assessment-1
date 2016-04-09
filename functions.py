@@ -153,7 +153,7 @@ x = return_info(5)
 print x
 
 pos_or_neg, even_or_odd = x
-print pos_or_neg, even_or_odd
+print 'Positive or negative?: {}; Even or odd?: {}'.format(pos_or_neg, even_or_odd)
 
 
 ################################################################
@@ -170,9 +170,17 @@ print pos_or_neg, even_or_odd
 #    If the state is California, apply a 7% tax within the function.
 #    Your function should return the total cost of the item including tax.
 
-def get_item_cost(cost, state, tax = .05):
-    pass
+def get_item_cost(price, state, tax = .05):
+    
+    if state == 'CA':
+        tax = .07
 
+    total = price + (price * tax)
+
+    return "Cost of item plus tax in {}: ${:.2f}".format(state, total)
+
+print get_item_cost(20, 'CA')
+print get_item_cost(state='NH', price=20)
 
 
 # 2. Turn the block of code from the directions into a function.
@@ -180,11 +188,40 @@ def get_item_cost(cost, state, tax = .05):
 # 	 job title defaults to "Engineer" if a job title is not passed in.
 #	 Return the person's title and name.
 
+def return_title_and_name(name, job_title = "Engineer"):
+
+    return "{} {}".format(job_title, name)
+
+print return_title_and_name('Bob', 'Nurse')
+print return_title_and_name('Sarah')
+
 # 3. Given a receiver's name, receiver's job title, and sender's name, print the following letter:      
 #       Dear JOB_TITLE RECEIVER_NAME, I think you are amazing! Sincerely,
 #       SENDER_NAME. 
 #    Use the function from #2 to construct the full title for the letter's greeting.
 
+def write_letter(receiver_name, sender_name, receiver_title = "Engineer"):
+    
+    title_and_name = return_title_and_name(receiver_name, receiver_title)
+
+    return "Dear {}, I think you are amazing! Sincerely, {}".format(title_and_name, 
+            sender_name)
+
+print write_letter('Sarah', 'Joe')
+print write_letter(receiver_title = 'Doctor', receiver_name = 'Jon', sender_name = 'Delilah')
+
+
 # 4. Turn the block of code from the directions into a function. This
 #    function will take a number and append it to *numbers*. It doesn't
 #    need to return anything.
+
+def append_number(num):
+    
+    numbers = [1,2]
+
+    numbers.append(num)
+
+    print numbers
+    return
+
+append_number(60)
