@@ -305,12 +305,12 @@ def average(number_list):
     There is no defined answer if the list given is empty. It's fine if
     this raises an error when given an empty list.
     """
-    sum_of_numbers = None
+    sum_of_numbers = 0
 
     for num in number_list:
-        sum_of_numbers = float(sum_of_numbers) + float(num)
+        sum_of_numbers = sum_of_numbers + num
 
-    average_of_list = float(sum_of_numbers/total_numbers)
+    average_of_list = float(sum_of_numbers/float(len(number_list)))
 
     return average_of_list
 
