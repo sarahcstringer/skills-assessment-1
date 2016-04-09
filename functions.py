@@ -96,6 +96,7 @@ print divisible_by_3(9)
 def return_num_spaces(string):
     """Return the number of spaces in a string of words"""
 
+    # start the counting variable at 0
     num_spaces = 0
 
     for char in string:
@@ -135,6 +136,7 @@ def return_info(num):
     """Return a list indicating whether an integer is positive or negative and 
     even or odd."""
 
+    # test whether integer is positive or negative 
     if num > 0:
         pos_or_neg = 'Positive'
     elif num < 0:
@@ -142,17 +144,23 @@ def return_info(num):
     elif num == 0:
         pos_or_neg = 'Zero'
 
+    # then test whether integer is even or odd
     if num % 2 == 0:
         even_or_odd = 'Even'
     else:
         even_or_odd = 'Odd'
 
+    # return a list containing the information
     return [pos_or_neg, even_or_odd]
 
+# call the function for the integer 5
 x = return_info(5)
 print x
 
+# unpack the returned list
 pos_or_neg, even_or_odd = x
+
+# print the results of the unpacking
 print 'Positive or negative?: {}; Even or odd?: {}'.format(pos_or_neg, even_or_odd)
 
 
@@ -171,6 +179,13 @@ print 'Positive or negative?: {}; Even or odd?: {}'.format(pos_or_neg, even_or_o
 #    Your function should return the total cost of the item including tax.
 
 def get_item_cost(price, state, tax = .05):
+
+    """
+    Return the cost of an item plus tax depending upon the state passed to the 
+    function. Default tax is 5%, but if 'CA' is entered as an argument, the tax 
+    amount becomes 7%. The user may also indicate a different tax amount, or
+    leave that argument out and resort to the default.
+    """
     
     if state == 'CA':
         tax = .07
@@ -179,6 +194,7 @@ def get_item_cost(price, state, tax = .05):
 
     return "Cost of item plus tax in {}: ${:.2f}".format(state, total)
 
+# test cases
 print get_item_cost(20, 'CA')
 print get_item_cost(state='NH', price=20)
 
@@ -190,8 +206,14 @@ print get_item_cost(state='NH', price=20)
 
 def return_title_and_name(name, job_title = "Engineer"):
 
+    """
+    Return a person's job title and name. Default job is Engineer, but user
+    can call function using a different title argument.
+    """
+
     return "{} {}".format(job_title, name)
 
+# test cases
 print return_title_and_name('Bob', 'Nurse')
 print return_title_and_name('Sarah')
 
@@ -202,13 +224,23 @@ print return_title_and_name('Sarah')
 
 def write_letter(receiver_name, sender_name, receiver_title = "Engineer"):
     
+    """
+    Print a letter given a receiver's name, receiver's job title and sender's name.
+    Based on function return_title_and_name. Default title is Engineer unless
+    otherwise specified.
+    """
+
+    # call the return_title_and_name function
     title_and_name = return_title_and_name(receiver_name, receiver_title)
 
-    return "Dear {}, I think you are amazing! Sincerely, {}".format(title_and_name, 
+    # print the letter
+    print "Dear {}, I think you are amazing! Sincerely, {}".format(title_and_name, 
             sender_name)
+    return
 
-print write_letter('Sarah', 'Joe')
-print write_letter(receiver_title = 'Doctor', receiver_name = 'Jon', sender_name = 'Delilah')
+# test cases
+write_letter('Sarah', 'Joe')
+write_letter(receiver_title = 'Doctor', receiver_name = 'Jon', sender_name = 'Delilah')
 
 
 # 4. Turn the block of code from the directions into a function. This
@@ -216,7 +248,11 @@ print write_letter(receiver_title = 'Doctor', receiver_name = 'Jon', sender_name
 #    need to return anything.
 
 def append_number(num):
-    
+    """
+    Append a number (called in the function) to a list of numbers (already defined
+    within the function).
+    """
+
     numbers = [1,2]
 
     numbers.append(num)
