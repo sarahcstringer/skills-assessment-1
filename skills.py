@@ -62,6 +62,7 @@ def every_other_item(my_list):
 
     """
     every_other_item = my_list[::2]
+    
     return every_other_item
 
 def print_indexes(my_list):
@@ -90,7 +91,7 @@ def print_indexes(my_list):
     # return
 
     for i, item in enumerate(my_list):
-        print i, my_list[i]
+        print i, item
     return
 
 
@@ -147,11 +148,11 @@ def smallest_int(number_list):
     smallest_int = number_list[0]
 
     for i, item in enumerate(number_list):
-        if smallest_int > number_list[i]:
-            smallest_int = number_list[i]
+        if smallest_int > item:
+            smallest_int = item
     
     if number_list == []:
-        smallest_int = None
+        return
 
     return smallest_int
 
@@ -176,8 +177,8 @@ def largest_int(number_list):
     largest_int = number_list[0]
 
     for i, item in enumerate(number_list):
-        if largest_int < number_list[i]:
-            largest_int = number_list[i]
+        if largest_int < item:
+            largest_int = item
 
     if number_list == []:
         largest_int = None
@@ -229,13 +230,13 @@ def sum_numbers(number_list):
 
     """
 
-    sum_of_numbers = None
-
-    for num in number_list:
-        sum_of_numbers = sum_of_numbers + num
-
     if number_list == []:
         sum_of_numbers = 0
+
+    else:
+        sum_of_numbers = number_list[0]
+        for num in number_list[1:]:
+            sum_of_numbers = sum_of_numbers + num
 
     return sum_of_numbers
 
@@ -259,7 +260,7 @@ def mult_numbers(number_list):
 
     """
 
-    prod_of_numbers = None
+    prod_of_numbers = 1
 
     for num in number_list:
         prod_of_numbers = prod_of_numbers * num
@@ -285,8 +286,15 @@ def join_strings(word_list):
         ''
 
     """
+    join_strings = None
 
-    return "Not the right thing"
+    for word in word_list:
+        join_strings = join_strings + word
+
+    if word_list == []:
+        join_strings = ''
+
+    return join_strings
 
 
 def average(number_list):
@@ -298,8 +306,14 @@ def average(number_list):
     There is no defined answer if the list given is empty. It's fine if
     this raises an error when given an empty list.
     """
+    sum_of_numbers = None
 
-    return 0
+    for num in number_list:
+        sum_of_numbers = float(sum_of_numbers) + float(num)
+
+    average_of_list = float(sum_of_numbers/total_numbers)
+
+    return average_of_list
 
 
 def join_strings_with_comma(list_of_words):
@@ -315,8 +329,15 @@ def join_strings_with_comma(list_of_words):
         'Pretzel'
 
     """
+    strings_with_comma = list_of_words[0]
+    
+    if len(list_of_words) == 1:
+        strings_with_comma = list_of_words[0]
+    else:
+        for word in list_of_words[1:]:
+            strings_with_comma = "{}, {}".format(strings_with_comma, word) 
 
-    return ""
+    return strings_with_comma
 
 
 def foods_in_common(foods1, foods2):
@@ -336,7 +357,12 @@ def foods_in_common(foods1, foods2):
 
     """
 
-    return set(['the wrong thing'])
+    set_foods_1 = set(foods1)
+    set_foods_2 = set(foods2)
+
+    foods_in_common = set_foods_1 & set_foods_2
+
+    return foods_in_common
 
 
 def reverse_list(my_list):
@@ -351,8 +377,9 @@ def reverse_list(my_list):
         ['I', 'love', 'cookies']
 
     """
+    reverse_list = word_list[::-1]
 
-    return []
+    return reverse_list
 
 
 def reverse_list_in_place(my_list):
@@ -405,8 +432,16 @@ def find_letter_indices(list_of_words, letter):
     [0, 1, 2, None]
 
     """
+    list_of_indices = []
 
-    return []
+    for word in list_of_words:
+        if letter not in word:
+            list_of_indices.append(None)
+        else:
+            for i, item in enumerate(word):
+                list_of_indices.append(i)
+
+    return list_of_indices
 
 def largest_n_items(input_list, n):
     """Given a list of integers along with an integer n, return a 
@@ -420,8 +455,10 @@ def largest_n_items(input_list, n):
     [59, 700, 6006]
 
     """
+    # not sure if this is legal:
+    largest_n_items = input_list.sort()
 
-    return []
+    return largest_n_items[-n::]
 
 
 ##############################################################################
