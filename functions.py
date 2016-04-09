@@ -53,6 +53,7 @@ def print_string_multiple(string, n):
 
     return
 
+# test case
 print_string_multiple('Hip hip hurray! ', 3)
 
 # 5. Write a function that takes an integer and prints "Higher
@@ -71,6 +72,7 @@ def print_higher_lower_0(num):
     
     return
 
+# test case
 print_higher_lower_0(5)
 print_higher_lower_0(-1)
 
@@ -87,6 +89,7 @@ def divisible_by_3(num):
     else:
         return False
 
+# test cases
 print divisible_by_3(7)
 print divisible_by_3(9)
 
@@ -99,12 +102,15 @@ def return_num_spaces(string):
     # start the counting variable at 0
     num_spaces = 0
 
+    # loop through each character in the string and increase counting variable
+    # when loop encounters a space.
     for char in string:
         if char == ' ':
             num_spaces += 1
 
     return num_spaces
 
+# test case
 print return_num_spaces('The quick brown fox jumped over the lazy dog.')
 
 # 8. Write a function that can be passed a meal price and a
@@ -117,10 +123,11 @@ def calculate_total_paid(price, tip = .15):
     """Return the total mount paid for a meal, given the price of the meal
     and tip amount (default amount is 15%)"""
 
-    return price + (price * tip)
+    return float(price + float((price * tip)))
 
-print calculate_total_paid(50)
-print calculate_total_paid(50, .2)
+# test cases
+print "${:,.2f}".format(calculate_total_paid(50))
+print "${:,.2f}".format(calculate_total_paid(50, .2))
 
 # 9. Write a function that takes an integer as an argument and
 #    returns two pieces of information as strings ---
@@ -187,22 +194,25 @@ def get_item_cost(price, state, tax = .05):
     leave that argument out and resort to the default.
     """
     
-    # check if 'CA' was given as an argument
-    if state == 'CA':
-        # If the user called a specific tax, don't apply the .07 default for CA.
-        # Instead, apply the tax amount the user called.
-        if tax != .05 and tax != .07:
-            tax = .07
+    # check if 'CA' was given as an argument.
 
-    total = price + (price * tax)
+    # If the user called a specific tax, don't apply the .07 default for CA.
+    # Instead, apply the tax amount the user called.
+    if state == 'CA' and tax == .05:
+        tax = .07
 
-    return "Cost of item plus tax in {}: ${:,.2f}".format(state, total)
+
+    total = float(price + float((price * tax)))
+
+    print "Cost of item plus tax in {}: ${:,.2f}".format(state, total)
+
+    return total
 
 # test cases
-print get_item_cost(20, 'CA')
-print get_item_cost(state='NH', price=20)
-print get_item_cost(1500, 'CA', .08)
-print get_item_cost(1500, 'CA')
+print get_item_cost(21, 'CA')
+print get_item_cost(state='NH', price=21)
+print get_item_cost(1553, 'CA', .08)
+print get_item_cost(1553, 'CA')
 
 
 # 2. Turn the block of code from the directions into a function.
