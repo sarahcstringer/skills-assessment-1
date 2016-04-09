@@ -145,14 +145,13 @@ def smallest_int(number_list):
 
     """
     
-    smallest_int = number_list[0]
-
-    for i, item in enumerate(number_list):
-        if smallest_int > item:
-            smallest_int = item
-    
     if number_list == []:
-        return
+        return False
+    else:
+        smallest_int = number_list[0]
+        for i, item in enumerate(number_list):
+            if smallest_int > item:
+                smallest_int = item
 
     return smallest_int
 
@@ -174,14 +173,13 @@ def largest_int(number_list):
         True
 
     """
-    largest_int = number_list[0]
-
-    for i, item in enumerate(number_list):
-        if largest_int < item:
-            largest_int = item
-
     if number_list == []:
-        return
+        return False
+    else:
+        largest_int = number_list[0]
+        for i, item in enumerate(number_list):
+            if largest_int < item:
+                largest_int = item
     
     return largest_int
 
@@ -376,7 +374,7 @@ def reverse_list(my_list):
         ['I', 'love', 'cookies']
 
     """
-    reverse_list = word_list[::-1]
+    reverse_list = my_list[::-1]
 
     return reverse_list
 
