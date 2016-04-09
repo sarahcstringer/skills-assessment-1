@@ -208,8 +208,9 @@ def word_lengths(word_list):
         [5, 3, 5, 4]
 
     """
+    word_lengths = [len(word) for word in word_list]
 
-    return []
+    return word_lengths
 
 
 def sum_numbers(number_list):
@@ -228,7 +229,15 @@ def sum_numbers(number_list):
 
     """
 
-    return None
+    sum_of_numbers = None
+
+    for num in number_list:
+        sum_of_numbers = sum_of_numbers + num
+
+    if number_list == []:
+        sum_of_numbers = 0
+
+    return sum_of_numbers
 
 
 def mult_numbers(number_list):
@@ -250,7 +259,15 @@ def mult_numbers(number_list):
 
     """
 
-    return None
+    prod_of_numbers = None
+
+    for num in number_list:
+        prod_of_numbers = prod_of_numbers * num
+
+    if number_list == []:
+        prod_of_numbers = 1
+
+    return prod_of_numbers
 
 
 def join_strings(word_list):
