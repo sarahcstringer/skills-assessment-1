@@ -285,7 +285,7 @@ def join_strings(word_list):
         ''
 
     """
-    join_strings = None
+    join_strings = ''
 
     for word in word_list:
         join_strings = join_strings + word
