@@ -19,6 +19,7 @@ def print_list(my_list):
     for item in my_list:
         print item
 
+    # Return nothing
     return
 
 def all_odd(number_list):
@@ -31,6 +32,9 @@ def all_odd(number_list):
         []
 
     """
+    # Find only the odd elements (not evenly divisible by 2) and return them
+    # as a list
+
     odd_elements = [num for num in number_list if num % 2 != 0]
 
     return odd_elements
@@ -46,6 +50,9 @@ def all_even(number_list):
         []
 
     """
+
+    # do the opposite of the above function (this time, find positive #s)
+
     even_elements = [num for num in number_list if num % 2 == 0]
     return even_elements
 
@@ -61,6 +68,8 @@ def every_other_item(my_list):
        ['you', 'are', 'good', 'at', 'coding']
 
     """
+    # return a slice of the list that skips every 2nd number
+
     every_other_item = my_list[::2]
     
     return every_other_item
@@ -90,6 +99,10 @@ def print_indexes(my_list):
 
     # return
 
+    # learned 'enumerate' function, i is the index position and item is the 
+    # element in that position in the list
+    # print both of those elemetns
+
     for i, item in enumerate(my_list):
         print i, item
     return
@@ -105,6 +118,7 @@ def long_words(word_list):
         []
 
     """
+    # find the words that are longer than 4 characters and create a list of those
 
     long_words = [word for word in word_list if len(word) > 4]
 
@@ -120,6 +134,10 @@ def n_long_words(word_list, n):
     >>> n_long_words(["I", "like", "apples", "bananas", "you"], 5)
     ['apples', 'bananas']
     """
+
+    # same as the above function, except this time the character length
+    # is called as an argument instead of a set value within the function
+
     n_long_words = [word for word in word_list if len(word) > n]
 
     return n_long_words
@@ -145,9 +163,16 @@ def smallest_int(number_list):
 
     """
     
+    # determine outcome for a blank list
     if number_list == []:
         smallest_int = False
         return
+
+    # start with the first number in the list and compare the next item in the
+    # list to it. If it's smaller than the first number, smallest_int rebinds
+    # to the lower value. 
+    # Continue to loop through the whole list this way.
+
     else:
         smallest_int = number_list[0]
         for i, item in enumerate(number_list):
@@ -174,10 +199,12 @@ def largest_int(number_list):
         True
 
     """
+    # Same as the above function, but this time, find the largest integer
 
     if number_list == []:
         largest_int = False
         return
+
     else:
         largest_int = number_list[0]
         for i, item in enumerate(number_list):
@@ -199,7 +226,11 @@ def halvesies(number_list):
         [0.5, 2.5]
 
     """
+    # create a list of numbers that contains half of each number in the input list
+    # make sure the number is a float so the decimal point is not dropped
+
     halvesies = [(float(num)/2) for num in number_list]
+
     return halvesies
 
 
@@ -210,6 +241,10 @@ def word_lengths(word_list):
         [5, 3, 5, 4]
 
     """
+
+    # calculate the length of each word in a list and store those lengths
+    # in a new list
+
     word_lengths = [len(word) for word in word_list]
 
     return word_lengths
@@ -230,9 +265,17 @@ def sum_numbers(number_list):
         0
 
     """
+
+    # initialize the sum_of_numbers variable, set to 0
+
     sum_of_numbers = 0
+
+    # set condition for a blank list
     if number_list == []:
         return sum_of_numbers
+
+    # if the list is not blank, iterate through the list and add each number
+    # to the running total
 
     else:
         for num in number_list[:]:
@@ -259,12 +302,16 @@ def mult_numbers(number_list):
         1
 
     """
+    # initialize the prod_of_numbers vaiable as 1.
 
     prod_of_numbers = 1
 
+    # iterate through the list and multiply each number by the running product
+    # of the list
     for num in number_list:
         prod_of_numbers = prod_of_numbers * num
 
+    # set condition for a blank list
     if number_list == []:
         prod_of_numbers = 1
 
@@ -286,10 +333,17 @@ def join_strings(word_list):
         ''
 
     """
+    
+    # initialize a blank string for the join_strings variable
+
     join_strings = ''
+
+    # add each word in a string to the join_strings variable
 
     for word in word_list:
         join_strings = join_strings + word
+
+    # if there is a blank input list, the string remains empty
 
     if word_list == []:
         join_strings = ''
@@ -306,10 +360,16 @@ def average(number_list):
     There is no defined answer if the list given is empty. It's fine if
     this raises an error when given an empty list.
     """
+    
+    # similar to sum_of_numbers, calculate the sum of a list of numbers, 
+    # divide that sum by the number of elements in the list, and return the average.
+
     sum_of_numbers = 0
 
     for num in number_list:
         sum_of_numbers = sum_of_numbers + num
+
+    # make sure the average is a float
 
     average_of_list = float(sum_of_numbers/float(len(number_list)))
 
@@ -329,10 +389,16 @@ def join_strings_with_comma(list_of_words):
         'Pretzel'
 
     """
+    
+    # start a list of strings, beginning with the first input word
+
     strings_with_comma = list_of_words[0]
     
+    # set condition for a list with only one element
     if len(list_of_words) == 1:
         strings_with_comma = list_of_words[0]
+
+    # iterate through the list of words    
     else:
         for word in list_of_words[1:]:
             strings_with_comma = "{}, {}".format(strings_with_comma, word) 
